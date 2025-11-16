@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+class CheckArgumentException extends Exception {
+    public CheckArgumentException(String message) {
+        super(message);
+    }
+}
+
+public class ArgumentSum {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println(" Lalita 24csu278");
+
+        try {
+           
+            System.out.print("Enter number of arguments: ");
+            int n = sc.nextInt();
+
+    
+            if (n < 5) {
+                // Throw custom exception
+                throw new CheckArgumentException("Error: At least 5 arguments required!");
+            }
+
+            int[] numbers = new int[n];
+            int sum = 0;
+
+            
+            System.out.println("Enter " + n + " integer arguments:");
+            for (int i = 0; i < n; i++) {
+                numbers[i] = sc.nextInt();
+                sum += numbers[i];
+            }
+
+            
+            System.out.println("Sum of entered numbers = " + sum);
+
+        } catch (CheckArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
